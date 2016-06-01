@@ -6,6 +6,7 @@ class Bird implements IObserver {
 
   private $isAwake = false;
   private $flowers = null;
+  private $lifetime = 0; 
   private $flowerMemory;
 
   public function __construct() {
@@ -20,6 +21,7 @@ class Bird implements IObserver {
       they have visited before while they have nectar, however if they are not empty they will remember the bitter taste of 
       emptiness and not visit again, which is a point of inference in this algorithm */
   public function hourChange(ISubject $subject) {
+    $this->lifetime++;
     if($this->isAwake) {
 
       $eaten = false;
@@ -44,7 +46,8 @@ class Bird implements IObserver {
       }
 
       if($eaten == false) {
-	exit(PHP_EOL."*ALL FLOWERS ARE EMPTY*".PHP_EOL.PHP_EOL);
+      	print("ALL FLOWERS EMPTY".PHP_EOL);
+	exit(PHP_EOL."*EXIT($this->lifetime)*".PHP_EOL.PHP_EOL); //count assumed to be number of hours asleep + awake
       }
     } else {
         print("SLEEP".PHP_EOL);
