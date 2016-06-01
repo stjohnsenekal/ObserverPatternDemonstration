@@ -32,6 +32,7 @@ require 'lib/Bird.php';
       $sun->updateHour();
       break;
     case 11:
+      print(PHP_EOL."HOUR CHANGE($i)".PHP_EOL);
       $sun->updateHour();
       $sun->onDayEnd();
       print(PHP_EOL."DAY END($i)".PHP_EOL);
